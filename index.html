@@ -257,8 +257,8 @@
         <div style="display: flex; align-items: center; gap: 10px;">
             <span style="color: var(--text-secondary); font-size: 0.85rem;">Units:</span>
             <select id="unit-select" style="width: auto; padding: 6px 12px; cursor: pointer;" onchange="changeUnits()">
+                <option value="metric" selected>Metric (mm / kg)</option>
                 <option value="imperial">Imperial (inch / lbs)</option>
-                <option value="metric">Metric (mm / kg)</option>
             </select>
         </div>
     </div>
@@ -274,15 +274,15 @@
                         <div class="form-group">
                             <label>Spring Rate (k)</label>
                             <div class="input-group">
-                                <input type="number" id="spring-rate" class="has-suffix" value="400" min="1" oninput="calculate()">
-                                <span class="input-suffix u-rate">lbs/in</span>
+                                <input type="number" id="spring-rate" class="has-suffix" value="7.14" min="0.1" step="0.01" oninput="calculate()">
+                                <span class="input-suffix u-rate">kg/mm</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Free Length</label>
                             <div class="input-group">
-                                <input type="number" id="free-length" class="has-suffix" value="2.200" step="0.001" min="0" oninput="calculate()">
-                                <span class="input-suffix u-dist">in</span>
+                                <input type="number" id="free-length" class="has-suffix" value="55.88" step="0.1" min="0" oninput="calculate()">
+                                <span class="input-suffix u-dist">mm</span>
                             </div>
                         </div>
                     </div>
@@ -290,8 +290,8 @@
                     <div class="form-group">
                         <label>Coil Bind Height <span style="font-size:0.75rem; font-weight:normal;">(Solid Height)</span></label>
                         <div class="input-group">
-                            <input type="number" id="bind-height" class="has-suffix" value="1.050" step="0.001" min="0" oninput="calculate()">
-                            <span class="input-suffix u-dist">in</span>
+                            <input type="number" id="bind-height" class="has-suffix" value="26.67" step="0.1" min="0" oninput="calculate()">
+                            <span class="input-suffix u-dist">mm</span>
                         </div>
                     </div>
                 </div>
@@ -303,15 +303,15 @@
                     <div class="form-group">
                         <label>Installed Height <span style="font-size:0.75rem; font-weight:normal;">(Valve Closed)</span></label>
                         <div class="input-group">
-                            <input type="number" id="installed-height" class="has-suffix" value="1.800" step="0.001" min="0" oninput="calculate()">
-                            <span class="input-suffix u-dist">in</span>
+                            <input type="number" id="installed-height" class="has-suffix" value="45.72" step="0.1" min="0" oninput="calculate()">
+                            <span class="input-suffix u-dist">mm</span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Max Valve Lift</label>
                         <div class="input-group">
-                            <input type="number" id="valve-lift" class="has-suffix" value="0.600" step="0.001" min="0" oninput="calculate()">
-                            <span class="input-suffix u-dist">in</span>
+                            <input type="number" id="valve-lift" class="has-suffix" value="15.24" step="0.1" min="0" oninput="calculate()">
+                            <span class="input-suffix u-dist">mm</span>
                         </div>
                     </div>
                 </div>
@@ -335,15 +335,15 @@
             <div class="stat-grid">
                 <div class="stat-box seat">
                     <div class="stat-label">Seat Pressure</div>
-                    <div class="stat-value"><span id="out-seat-press">0</span> <span class="u-force" style="font-size:0.5em; color:var(--text-secondary)">lbs</span></div>
+                    <div class="stat-value"><span id="out-seat-press">0</span> <span class="u-force" style="font-size:0.5em; color:var(--text-secondary)">kg</span></div>
                 </div>
                 <div class="stat-box open">
                     <div class="stat-label">Open Pressure</div>
-                    <div class="stat-value"><span id="out-open-press">0</span> <span class="u-force" style="font-size:0.5em; color:var(--text-secondary)">lbs</span></div>
+                    <div class="stat-value"><span id="out-open-press">0</span> <span class="u-force" style="font-size:0.5em; color:var(--text-secondary)">kg</span></div>
                 </div>
                 <div class="stat-box" id="box-bind">
                     <div class="stat-label">Bind Clearance</div>
-                    <div class="stat-value"><span id="out-clearance">0</span> <span class="u-dist" style="font-size:0.5em; color:var(--text-secondary)">in</span></div>
+                    <div class="stat-value"><span id="out-clearance">0</span> <span class="u-dist" style="font-size:0.5em; color:var(--text-secondary)">mm</span></div>
                 </div>
             </div>
 
@@ -351,22 +351,22 @@
             <div class="metrics-list">
                 <div class="metric-row">
                     <span style="color: var(--text-secondary);">Open Height (Valve Fully Open)</span>
-                    <span class="metric-val"><span id="out-open-height">0</span> <span class="u-dist">in</span></span>
+                    <span class="metric-val"><span id="out-open-height">0</span> <span class="u-dist">mm</span></span>
                 </div>
                 <div class="metric-row">
                     <span style="color: var(--text-secondary);">Total Compression at Seat</span>
-                    <span class="metric-val"><span id="out-comp-seat">0</span> <span class="u-dist">in</span></span>
+                    <span class="metric-val"><span id="out-comp-seat">0</span> <span class="u-dist">mm</span></span>
                 </div>
                 <div class="metric-row">
                     <span style="color: var(--text-secondary);">Total Compression at Open</span>
-                    <span class="metric-val"><span id="out-comp-open">0</span> <span class="u-dist">in</span></span>
+                    <span class="metric-val"><span id="out-comp-open">0</span> <span class="u-dist">mm</span></span>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        let isMetric = false;
+        let isMetric = true;
         let myChart = null;
 
         function changeUnits() {
